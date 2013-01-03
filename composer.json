@@ -1,7 +1,7 @@
 {
     "name": "ccovey/odbc-driver-l4",
     "type": "library",
-    "decsription": "Laravel 4 ODBC Driver",
+    "description": "Laravel 4 ODBC Driver",
     "keywords": ["L4", "ODBC", "Laravel 4", "Laravel"],
     "homepage": "http://github.com/ccovey/odbc-driver-l4",
     "require": {
