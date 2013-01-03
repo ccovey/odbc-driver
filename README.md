@@ -10,6 +10,7 @@ To Install this in your Laravel 4 app add
 
 ```json
 require {
+  "illuminate/app": "1.*",
   "ccovey/odbc-driver-l4": "*"
 }
 ```
