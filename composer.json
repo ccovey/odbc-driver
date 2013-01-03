@@ -14,6 +14,6 @@
         }
     ],
     "autoload": {
-        "psr-0": {"ODBCDriver": "src/"}
+        "psr-0": {"Ccovey\\ODBCDriver": "src/"}
     }
 }
