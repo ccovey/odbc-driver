@@ -57,6 +57,12 @@ Finally be sure to add the odbc driver with connection information to the `confi
             'username' => 'foo',
             'password' => 'bar',
         ),
-    ),```
-    
-    
+    ),
+```
+
+Notes
+==========
+
+This currently only uses the Default Grammar, which is basically MySql grammar.
+
+I have some ideas on how to get grammar based on the driver provided in the connection config array. Will take a bit to implement though. If you would like to submit a Grammar File please submit a pull request and I will add it in as possible.
