@@ -11,7 +11,8 @@ To Install this in your Laravel 4 app add
 ```json
 require {
   "ccovey/odbc-driver-l4": "*"
-}```
+}
+```
 
 And then run 
 
