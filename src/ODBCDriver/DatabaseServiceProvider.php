@@ -3,9 +3,9 @@
 namespace Ccovey\ODBCDriver;
 
 use Illuminate\Database\Eloquent\Model as Model;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as Provider;
 
-class DatabaseServiceProvider extends ServiceProvider {
+class DatabaseServiceProvider extends Provider\ServiceProvider {
 
     /**
      * Register the service provider.
