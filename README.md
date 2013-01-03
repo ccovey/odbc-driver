@@ -28,7 +28,7 @@ And replace it with
 
 Finally be sure to add the odbc driver with connection information to the `config/database.php` file like so:
 
-`'default' => 'mysql',
+```'default' => 'mysql',
     'connections' => array(
         'mysql' => array(
             'driver' => 'mysql',
@@ -53,6 +53,6 @@ Finally be sure to add the odbc driver with connection information to the `confi
             'username' => 'foo',
             'password' => 'bar',
         ),
-    ),`
+    ),```
     
     
