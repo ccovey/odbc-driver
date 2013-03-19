@@ -26,7 +26,7 @@ Then in your app/config directory open app.php and find
 
 And replace it with
 
-`'Ccovey\ODBCDriver',`
+`'Ccovey\ODBCDriver\ODBCDriverServiceProvider',`
 
 Finally be sure to add the odbc driver with connection information to the `config/database.php` file like so:
 
