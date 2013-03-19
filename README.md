@@ -10,7 +10,7 @@ To Install this in your Laravel 4 app add
 
 ```json
 require {
-  "ccovey/odbc-driver": "*"
+  "ccovey/odbc-driver": "dev-master"
 }
 ```
 
@@ -54,7 +54,7 @@ Finally be sure to add the odbc driver with connection information to the `confi
         'odbc' => array(
             'driver' => 'odbc',
             'dsn' => 'Driver={iSeries Access ODBC Driver};System=my_system_name;',
-            'grammar' => '',
+            'grammar' => 'DB2',
             'username' => 'foo',
             'password' => 'bar',
         ),
@@ -64,6 +64,6 @@ Finally be sure to add the odbc driver with connection information to the `confi
 Notes
 ==========
 
-This currently only uses the Default Grammar, which is basically MySql grammar. I am going to pull the grammar depending on a `grammar` config option in the database config. If you would like to submit a PR for a grammar file please feel free to do so and I'll get those merged in asap!
+To add a custom grammar add your file to ODBCDriver/Grammars with the name you would like to use (current there is a DB2 grammar file if you would like a reference). Then in your odbc config array add the class name to the grammar key. If you would like to submit a grammar for use in the package please submit a pull request and I will get it in asap.
 
 
