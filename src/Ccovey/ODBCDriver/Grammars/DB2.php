@@ -54,19 +54,19 @@ class DB2 extends Grammar
         // does not complain about the queries for not having an "order by" clause.
         if ( ! isset($components['orders']))
         {
-            $components['orders'] = 'order by EMUSER';
+            $components['orders'] = 'order by 1';
         }
 
         unset($components['limit']);
-
-        $components['columns'] = 'select T1.*, ';
 
         // We need to add the row number to the query so we can compare it to the offset
         // and limit values given for the statements. So we will add an expression to
         // the "select" that will give back the row numbers on each of the records.
         $orderings = $components['orders'];
 
-        $components['columns'] .= $this->compileOver($orderings);
+        $columns = (!empty($components['columns']) ? $components['columns'] . ', ': 'select');
+
+        $components['columns'] = $this->compileOver($orderings, $columns);
 
         unset($components['orders']);
 
@@ -91,9 +91,9 @@ class DB2 extends Grammar
      * @param  string  $orderings
      * @return string
      */
-    protected function compileOver($orderings)
+    protected function compileOver($orderings, $columns)
     {
-        return " row_number() over ({$orderings}) as row_num, T1.*";
+        return "{$columns} row_number() over ({$orderings}) as row_num";
     }
 
     protected function compileRowConstraint($query)

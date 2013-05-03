@@ -19,7 +19,9 @@ class ODBCDriverServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('ccovey/odbc-driver');
+		Database\Eloquent\Model::setConnectionResolver($this->app['db']);
+
+		Database\Eloquent\Model::setEventDispatcher($this->app['events']);
 	}
 
 	/**
@@ -29,20 +31,13 @@ class ODBCDriverServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app['db.factory'] = $this->app->share(function() {
-			return new ODBCDriverConnectionFactory;
+		$this->app['db.factory'] = $this->app->share(function($app) {
+			return new ODBCDriverConnectionFactory($app);
 		});
 
 		$this->app['db'] = $this->app->share(function($app) {
 			return new Database\DatabaseManager($app, $app['db.factory']);
 		});
-
-		$this->registerEloquent();
-	}
-
-	public function registerEloquent()
-	{
-		Database\Eloquent\Model::setConnectionResolver($this->app['db']);
 	}
 
 	/**
