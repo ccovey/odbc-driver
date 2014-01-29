@@ -1,24 +1,29 @@
 <?php namespace Ccovey\ODBCDriver;
 
-use Illuminate\Database;
+use Illuminate\Database\Query\Grammars\Grammar;
 
 class ODBCDriverConnection extends Database\Connection
 {
 	/**
-	 * [getDefaultGrammar description]
 	 * @return Query\Grammars\Grammar
 	 */
 	protected function getDefaultQueryGrammar()
 	{
-		$grammar = $this->getGrammarConfig();
+		$grammarConfig = $this->getGrammarConfig();
 
-		if ($grammar) {
-			$grammar = "Ccovey\\ODBCDriver\\Grammars\\" . $grammar;
-
-			return $this->withTablePrefix(new $grammar);
+		if ($grammarConfig) {
+			$packageGrammar = "Ccovey\\ODBCDriver\\Grammars\\" . $grammarConfig; 
+			if (class_exists($packageGrammar)) {
+				return $this->withTablePrefix(new $packageGrammar);
+			}
+			
+			$illuminateGrammar = "Illuminate\\Database\\Query\\Grammars\\" . $grammarConfig;
+			if (class_exists($illuminateGrammar)) {
+				return $this->withTablePrefix(new $illuminateGrammar);
+			}
 		}
 
-		return $this->withTablePrefix(new Database\Query\Grammars\Grammar);
+		return $this->withTablePrefix(new Grammar);
 	}
 
 	/**
@@ -32,8 +37,8 @@ class ODBCDriverConnection extends Database\Connection
 
 	protected function getGrammarConfig()
 	{
-		if (\Config::has('database.connections.odbc.grammar')) {
-			return \Config::get('database.connections.odbc.grammar');
+		if ($this->config->has('database.connections.odbc.grammar')) {
+			return $this->config->get('database.connections.odbc.grammar');
 		}
 
 		return false;
