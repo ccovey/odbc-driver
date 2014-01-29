@@ -1,17 +1,13 @@
-<?php namespace Ccovey\ODBCDriver;
+<?php
 
+namespace Ccovey\ODBCDriver;
+
+use Illuminate\Database\DatabaseManager;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database;
 
-class ODBCDriverServiceProvider extends ServiceProvider {
-
-	/**
-	 * Indicates if loading of the provider is deferred.
-	 *
-	 * @var bool
-	 */
-	protected $defer = false;
-
+class ODBCDriverServiceProvider extends ServiceProvider
+{
 	/**
 	 * Bootstrap the application events.
 	 *
@@ -19,9 +15,9 @@ class ODBCDriverServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		Database\Eloquent\Model::setConnectionResolver($this->app['db']);
+		Model::setConnectionResolver($this->app['db']);
 
-		Database\Eloquent\Model::setEventDispatcher($this->app['events']);
+		Model::setEventDispatcher($this->app['events']);
 	}
 
 	/**
@@ -31,12 +27,12 @@ class ODBCDriverServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app['db.factory'] = $this->app->share(function($app) {
+		$this->app->bindShared('db.factory', function($app) {
 			return new ODBCDriverConnectionFactory($app);
 		});
 
-		$this->app['db'] = $this->app->share(function($app) {
-			return new Database\DatabaseManager($app, $app['db.factory']);
+		$this->app->bindShared('db', function($app) {
+			return new DatabaseManager($app, $app['db.factory']);
 		});
 	}
 
@@ -49,5 +45,4 @@ class ODBCDriverServiceProvider extends ServiceProvider {
 	{
 		return array('odbcdriver');
 	}
-
 }

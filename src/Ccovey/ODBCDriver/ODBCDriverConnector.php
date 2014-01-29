@@ -1,11 +1,11 @@
-<?php namespace Ccovey\ODBCDriver;
+<?php
 
-use Illuminate\Database;
+namespace Ccovey\ODBCDriver;
 
-/**
-*
-*/
-class ODBCDriverConnector extends Database\Connectors\Connector implements Database\Connectors\ConnectorInterface
+use Illuminate\Database\Connectors\Connector;
+use Illuminate\Database\Connectors\ConnectorInterface;
+
+class ODBCDriverConnector extends Connector implements ConnectorInterface
 {
 	public function connect(array $config)
 	{
