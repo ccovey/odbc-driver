@@ -38,8 +38,8 @@ class ODBCDriverConnection extends Connection
 
 	protected function getGrammarConfig()
 	{
-		if ($this->config->has('database.connections.odbc.grammar')) {
-			return $this->config->get('database.connections.odbc.grammar');
+		if ($this->getConfig('grammar')) {
+			return $this->getConfig('grammar');
 		}
 
 		return false;
