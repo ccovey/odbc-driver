@@ -3,7 +3,7 @@
 use Illuminate\Database\Connection;
 use Illuminate\Database\Query\Grammars\Grammar;
 
-class ODBCDriverConnection extends Database\Connection
+class ODBCDriverConnection extends Connection
 {
 	/**
 	 * @return Query\Grammars\Grammar
