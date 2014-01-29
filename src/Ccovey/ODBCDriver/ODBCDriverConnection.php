@@ -1,5 +1,6 @@
 <?php namespace Ccovey\ODBCDriver;
 
+use Illuminate\Database\Connection;
 use Illuminate\Database\Query\Grammars\Grammar;
 
 class ODBCDriverConnection extends Database\Connection

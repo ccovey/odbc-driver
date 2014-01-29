@@ -1,8 +1,18 @@
-<?php namespace Ccovey\ODBCDriver;
+<?php
 
-use Illuminate\Database;
+namespace Ccovey\ODBCDriver;
 
-class ODBCDriverConnectionFactory extends Database\Connectors\ConnectionFactory
+use Illuminate\Database\Connectors\ConnectionFactory;
+use Illuminate\Database\Connectors\MySqlConnector;
+use Illuminate\Database\Connectors\PostgresConnector;
+use Illuminate\Database\Connectors\SQLiteConnector;
+use Illuminate\Database\Connectors\SqlServerConnector;
+use Illuminate\Database\MySqlConnection;
+use Illuminate\Database\PostgresConnection;
+use Illuminate\Database\SQLiteConnection;
+use Illuminate\Database\SqlServerConnection;
+
+class ODBCDriverConnectionFactory extends ConnectionFactory
 {
 	public function createConnector(array $config)
 	{
@@ -12,13 +22,13 @@ class ODBCDriverConnectionFactory extends Database\Connectors\ConnectionFactory
 
 		switch ($config['driver']) {
 			case 'mysql':
-				return new Database\Connectors\MySqlConnector;
+				return new MySqlConnector;
 			case 'pgsql':
-				return new Database\Connectors\PostgresConnector;
+				return new PostgresConnector;
 			case 'sqlite':
-				return new Database\Connectors\SQLiteConnector;
+				return new SQLiteConnector;
 			case 'sqlsrv':
-				return new Database\Connectors\SqlServerConnector;
+				return new SqlServerConnector;
 			case 'odbc':
 				return new ODBCDriverConnector;
 		}
@@ -30,16 +40,16 @@ class ODBCDriverConnectionFactory extends Database\Connectors\ConnectionFactory
 	{
 		switch ($driver) {
             case 'mysql':
-                return new Database\MySqlConnection($connection, $database, $tablePrefix);
+                return new MySqlConnection($connection, $database, $tablePrefix);
 
             case 'pgsql':
-                return new Database\PostgresConnection($connection, $database, $tablePrefix);
+                return new PostgresConnection($connection, $database, $tablePrefix);
 
             case 'sqlite':
-                return new Database\SQLiteConnection($connection, $database, $tablePrefix);
+                return new SQLiteConnection($connection, $database, $tablePrefix);
 
             case 'sqlsrv':
-                return new Database\SqlServerConnection($connection, $database, $tablePrefix);
+                return new SqlServerConnection($connection, $database, $tablePrefix);
                 
             case 'odbc':
                 return new ODBCDriverConnection($connection, $database, $tablePrefix);
