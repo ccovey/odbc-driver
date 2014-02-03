@@ -10,7 +10,8 @@
     "require": {
         "php": ">=5.3.0",
         "illuminate/support": "4.1.x",
-        "illuminate/database": "4.1.x"
+        "illuminate/database": "4.1.x",
+        "ext-pdo-odbc": "*"
     },
     "require-dev": {
         "mockery/mockery": "dev-master"
