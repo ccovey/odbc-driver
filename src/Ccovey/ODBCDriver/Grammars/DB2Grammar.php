@@ -5,7 +5,7 @@ use Illuminate\Database\Query\Grammars\Grammar;
 /**
 * DB2 Grammar
 */
-class DB2 extends Grammar
+class DB2Grammar extends Grammar
 {
      /**
      * Compile the "limit" portions of the query.
