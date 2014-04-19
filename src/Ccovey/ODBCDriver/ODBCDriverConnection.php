@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Connection;
 use Illuminate\Database\Query\Grammars\Grammar;
-use Illuminate\Database\Schema\Grammars\Grammar;
 
 class ODBCDriverConnection extends Connection
 {
