@@ -13,7 +13,7 @@ class ODBCDriverConnection extends Connection
 		$grammarConfig = $this->getGrammarConfig();
 
 		if ($grammarConfig) {
-			$packageGrammar = "Ccovey\\ODBCDriver\\Grammars\\" . $grammarConfig;
+			$packageGrammar = "Illuminate\\Database" . $grammarConfig;
 			if (class_exists($packageGrammar)) {
 				return $this->withTablePrefix(new $packageGrammar);
 			}
@@ -33,6 +33,18 @@ class ODBCDriverConnection extends Connection
 	 */
 	protected function getDefaultSchemaGrammar()
 	{
+        $grammarConfig = $this->getGrammarConfig();
+		if ($grammarConfig) {
+			$packageGrammar = "Illuminate\\Database" . $grammarConfig;
+			if (class_exists($packageGrammar)) {
+				return $this->withTablePrefix(new $packageGrammar);
+			}
+
+			$illuminateGrammar = "Illuminate\\Database\\Schema\\Grammars\\" . $grammarConfig;
+			if (class_exists($illuminateGrammar)) {
+				return $this->withTablePrefix(new $illuminateGrammar);
+			}
+		}
 		return $this->withTablePrefix(new Schema\Grammars\Grammar);
 	}
 
