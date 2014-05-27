@@ -1,10 +1,10 @@
 {
-    "name": "ccovey/odbc-driver",
-    "description": "",
+    "name": "wajatimur/odbc-driver",
+    "description": "ODBC Driver for Laravel",
     "authors": [
         {
-            "name": "Cody Covey",
-            "email": "ccovey14@gmail.com"
+            "name": "Azri Jamil",
+            "email": "azri@nematix.com"
         }
     ],
     "require": {
@@ -20,7 +20,7 @@
             "src/migrations"
         ],
         "psr-0": {
-            "Ccovey\\ODBCDriver": "src/"
+            "Foundation\\Database\\Driver\\ODBCDriver": "src/"
         }
     },
     "minimum-stability": "dev"
