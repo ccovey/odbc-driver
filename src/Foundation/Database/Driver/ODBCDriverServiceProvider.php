@@ -1,6 +1,4 @@
-<?php
-
-namespace Ccovey\ODBCDriver;
+<?php namespace Foundation\Database\Driver;
 
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Model;

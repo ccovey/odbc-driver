@@ -1,7 +1,8 @@
-<?php namespace Ccovey\ODBCDriver;
+<?php namespace Foundation\Database\Driver;
 
 use Illuminate\Database\Connection;
 use Illuminate\Database\Schema\Grammars\Grammar;
+
 
 class ODBCDriverConnection extends Connection
 {
@@ -13,7 +14,7 @@ class ODBCDriverConnection extends Connection
 		$grammarConfig = $this->getGrammarConfig();
 
 		if ($grammarConfig) {
-			$packageGrammar = "Ccovey\\ODBCDriver\\Grammars\\" . $grammarConfig; 
+			$packageGrammar = "Foundation\\Database\\Driver\\Grammars\\" . $grammarConfig; 
 			if (class_exists($packageGrammar)) {
 				return $this->withTablePrefix(new $packageGrammar);
 			}

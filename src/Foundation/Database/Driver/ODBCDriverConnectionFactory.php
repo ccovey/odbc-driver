@@ -1,6 +1,4 @@
-<?php
-
-namespace Ccovey\ODBCDriver;
+<?php namespace Foundation\Database\Driver;
 
 use Illuminate\Database\Connectors\ConnectionFactory;
 use Illuminate\Database\Connectors\MySqlConnector;

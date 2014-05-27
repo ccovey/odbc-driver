@@ -1,4 +1,4 @@
-<?php namespace Ccovey\ODBCDriver\Grammars;
+<?php namespace Foundation\Database\Driver\Grammars;
 
 use Illuminate\Database\Query\Grammars\Grammar;
 

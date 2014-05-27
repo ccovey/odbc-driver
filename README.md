@@ -1,6 +1,3 @@
-l4-odbc-driver
-==============
-
 Laravel 4 ODBC 
 
 Installation
@@ -10,7 +7,7 @@ To Install this in your Laravel 4.1 app add
 
 ```json
 require {
-  "ccovey/odbc-driver-l4": "1.1.x"
+  "wajatimur/odbc-driver": "dev-master"
 }
 ```
 
@@ -26,7 +23,7 @@ Then in your app/config directory open app.php and find
 
 And replace it with
 
-`'Ccovey\ODBCDriver\ODBCDriverServiceProvider',`
+`'Foundation\Database\Driver\ODBCDriverServiceProvider',`
 
 Finally be sure to add the odbc driver with connection information to the `config/database.php` file like so:
 
