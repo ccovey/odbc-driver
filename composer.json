@@ -1,23 +1,22 @@
 {
     "name": "wajatimur/odbc-driver",
+    "type": "library",
     "description": "ODBC Driver for Laravel",
+    "keywords": ["odbc","laravel"],
     "authors": [
         {
             "name": "Azri Jamil",
-            "email": "azri@nematix.com"
+            "email": "azri@nematix.com",
+            "homepage": "http://wajatimur.wordpress.com"
         }
     ],
+    "license": "MIT",
     "require": {
         "php": ">=5.3.0",
         "illuminate/support": "4.1.*",
         "illuminate/database": "4.1.*"
     },
-    "require-dev": {
-        "mockery/mockery": "dev-master"
-    },
     "autoload": {
-        "classmap": [
-        ],
         "psr-0": {
             "Foundation\\Database\\Driver\\ODBCDriver": "src/"
         }
