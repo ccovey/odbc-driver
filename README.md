@@ -1,54 +1,29 @@
 Laravel 4 ODBC 
-==============
-
-Installation
 ============
 
-To Install this in your Laravel 4.1 app add
+## Requirements
+- PHP 5.3+
+- Laravel 4.1.*
+
+## Installation
+L4ODBC can be install using composer by adding below line into your existing `composer.json` under require section and executing `composer update` in your Laravel project root folder.
 
 ```json
-require {
-  "wajatimur/odbc-driver": "dev-master"
-}
+"wajatimur/odbc-driver": "dev-master"
 ```
 
-And then run 
-
-`composer install`
-
-This will download the required package from Packagist.org
-
-Then in your app/config directory open app.php and find 
-
-`'Illuminate\Database\DatabaseServiceProvider',`
-
-And replace it with
+Then you need to bootstrap the driver by declaring the service provider registration in you `app.php` file under `app\config` path from Laravel project root folder.
 
 `'Foundation\Database\Driver\ODBCDriverServiceProvider',`
 
+## Configuration
 Finally be sure to add the odbc driver with connection information to the `config/database.php` file like so:
 
 ```php
-'default' => 'mysql',
     'connections' => array(
-        'mysql' => array(
-            'driver' => 'mysql',
-            'host' => 'localhost',
-            'database' => 'database',
-            'username' => 'root',
-            'password' => '',
-            'charset' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix' => '',
-        ),
-        'sqlsrv' => array(
-            'driver' => 'sqlsrv',
-            'host' => 'localhost',
-            'database' => 'database',
-            'username' => 'root',
-            'password' => '',
-            'prefix' => '',
-        ),
+
+        // .. Existing config here ..
+
         'odbc' => array(
             'driver' => 'odbc',
             'dsn' => 'Driver={iSeries Access ODBC Driver};System=my_system_name;',
@@ -60,23 +35,45 @@ Finally be sure to add the odbc driver with connection information to the `confi
     ),
 ```
 
-Note that database is a required value in the array.
+## Extending
+To create a custom grammar just add your file to `Grammars` folder within the package. Below is the basic template to create a custom grammar.
 
-Notes
-==========
+```php
+namespace Foundation\Database\Driver\Grammars;
 
-To add a custom grammar add your file to ODBCDriver/Grammars with the name you would like to use (currently there is a DB2 grammar file if you would like a reference). Then in your odbc config array add the class name to the grammar key. If you would like to submit a grammar for use in the package please submit a pull request and I will get it in asap.
+use Illuminate\Database\Query\Grammars\Grammar;
 
-If you would like to use a Laravel provided file just add that instead. For example if you want to use SQL Server Gramamr instead you can add like so:
+class MyCustomGrammar extends {
+    // .. Add your override method here ..
+}
+
+```
+
+### Using Custom Grammer
+To use the custom grammar, jusct change the grammar key in you database config base on you grammar file name. If you have a custom grammar with file name `MyCustomGrammar`, the grammar key should be as below.
 
 ```php
 'odbc' => array(
     'driver' => 'odbc',
     'dsn' => 'some driver',
-    'grammar' => 'SqlServerGrammar',
+    'grammar' => 'MyCustomGrammar',
     'username' => 'foo',
     'password' => 'bar',
     'database' => '',
 ),
+```
+
+If you would like to use a Laravel provided grammar file just add that instead. For example if you want to use SQL Server Gramamr, you can use the `SqlServerGrammar` as key in your database config. Others grammar provided by Laravel listed below.
+
+- MySqlGrammar
+- SqlServerGrammar
+- SQLiteGrammar
+- PostgresGrammar
+
+If you would like to submit a grammar for use in the package please submit a pull request and I will get it in asap.
+
+
+
+
 
 
