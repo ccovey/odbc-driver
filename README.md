@@ -14,7 +14,9 @@ L4ODBC can be install using composer by adding below line into your existing `co
 
 Then you need to bootstrap the driver by declaring the service provider registration in you `app.php` file under `app\config` path from Laravel project root folder.
 
-`'Foundation\Database\Driver\ODBCDriverServiceProvider',`
+```php
+'Foundation\Database\Driver\ODBCDriverServiceProvider',
+```
 
 ## Configuration
 Finally be sure to add the odbc driver with connection information to the `config/database.php` file like so:
@@ -49,8 +51,8 @@ class MyCustomGrammar extends {
 
 ```
 
-### Using Custom Grammer
-To use the custom grammar, jusct change the grammar key in you database config base on you grammar file name. If you have a custom grammar with file name `MyCustomGrammar`, the grammar key should be as below.
+### Using Custom Grammar
+To use the custom grammar, jusct change the grammar key in you database config base on you grammar file name. If you have a custom grammar with file name `MyCustomGrammar.php`, the grammar key should be as below.
 
 ```php
 'odbc' => array(
