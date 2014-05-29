@@ -1,6 +1,8 @@
 Laravel 4 ODBC 
 ============
 
+An ODBC driver implementation, currently its support Laravel Framework only.
+
 ## Requirements
 - PHP 5.3+
 - Laravel 4.1.*
