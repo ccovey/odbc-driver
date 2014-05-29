@@ -1,5 +1,4 @@
-Laravel 4 ODBC 
-============
+# Laravel 4 ODBC [![Build Status](https://travis-ci.org/wajatimur/odbc-driver.svg?branch=master)](https://travis-ci.org/wajatimur/odbc-driver)
 
 An ODBC driver implementation, currently its support Laravel Framework only.
 
