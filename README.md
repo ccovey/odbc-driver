@@ -1,7 +1,7 @@
 l4-odbc-driver
 ==============
 
-Laravel 4 ODBC 
+Laravel 4 ODBC
 
 Installation
 ============
@@ -14,13 +14,13 @@ require {
 }
 ```
 
-And then run 
+And then run
 
 `composer install`
 
 This will download the required package from Packagist.org
 
-Then in your app/config directory open app.php and find 
+Then in your app/config directory open app.php and find
 
 `'Illuminate\Database\DatabaseServiceProvider',`
 
@@ -54,7 +54,7 @@ Finally be sure to add the odbc driver with connection information to the `confi
         'odbc' => array(
             'driver' => 'odbc',
             'dsn' => 'Driver={iSeries Access ODBC Driver};System=my_system_name;',
-            'grammar' => 'DB2',
+            'type' => 'DB2',
             'username' => 'foo',
             'password' => 'bar',
             'database' => '',
