@@ -18,8 +18,7 @@ class DB2 extends Processor {
 	public function processInsertGetId(Builder $query, $sql, $values, $sequence = null)
 	{
 		$sequence = $sequence ?: 'id';
-		$query->getConnection()->insert($sql, $values);
-		$result = $query->getConnection()->selectOne('SELECT IDENTITY_VAL_LOCAL() AS LASTID FROM SYSIBM.SYSDUMMY1');
+		$result = $query->getConnection()->selectOne("SELECT $sequence as LASTID FROM NEW TABLE ($sql)", $values);
 		$id = $result->LASTID;
 		return is_numeric($id) ? (int) $id : $id;
 	}
