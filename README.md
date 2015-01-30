@@ -53,8 +53,9 @@ Finally be sure to add the odbc driver with connection information to the `confi
         ),
         'odbc' => array(
             'driver' => 'odbc',
-            'dsn' => 'Driver={iSeries Access ODBC Driver};System=my_system_name;',
+            'dsn' => 'DRIVER={iSeries Access ODBC Driver};SYSTEM=my_system_ip_or_name;PROTOCOL=TCPIP;',
             'grammar' => 'DB2',
+            'processor' => 'DB2',
             'username' => 'foo',
             'password' => 'bar',
             'database' => '',
